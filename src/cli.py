@@ -1,8 +1,8 @@
 import argparse
-from typing import List, Namespace
+from typing import List
 
 
-def parse_args() -> Namespace:
+def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Скрипт для анализа макроэкономических данных"
     )
