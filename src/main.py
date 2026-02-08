@@ -4,7 +4,7 @@ import sys
 from src.cli import parse_args
 from src.reader.csv_reader import read_csv_files
 from src.models.record import Record
-
+from src.reports.registry import get_report
 
 def main() -> None:
 
@@ -24,6 +24,11 @@ def main() -> None:
         print("Нет данных для обработки", file=sys.stderr)
         sys.exit(1)
 
+    try:
+        report = get_report(args.report)
+    except ValueError as e:
+        print(f"Ошибка: {e}", file=sys.stderr)
+        sys.exit(1)
 
    
 
