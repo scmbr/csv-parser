@@ -5,6 +5,7 @@ from src.cli import parse_args
 from src.reader.csv_reader import read_csv_files
 from src.models.record import Record
 from src.reports.registry import get_report
+from src.output.table import print_table
 
 def main() -> None:
 
@@ -30,11 +31,11 @@ def main() -> None:
         print(f"Ошибка: {e}", file=sys.stderr)
         sys.exit(1)
 
-   
+       
+    table_data = report.generate(records)
 
 
-
-
+    print_table(table_data)
 
 if __name__ == "__main__":
     main()
