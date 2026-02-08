@@ -1,0 +1,35 @@
+from typing import List
+import sys
+
+from src.cli import parse_args
+from src.reader.csv_reader import read_csv_files
+from src.models.record import Record
+
+
+def main() -> None:
+
+    args = parse_args()  
+
+
+    try:
+        records: List[Record] = list(read_csv_files(args.files))
+    except FileNotFoundError as e:
+        print(f"Ошибка: {e}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"Непредвиденная ошибка при чтении CSV: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    if not records:
+        print("Нет данных для обработки", file=sys.stderr)
+        sys.exit(1)
+
+
+   
+
+
+
+
+
+if __name__ == "__main__":
+    main()
